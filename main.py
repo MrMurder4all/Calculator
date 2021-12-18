@@ -36,13 +36,13 @@ KV = '''
             source: "logo.png"
 
     MDLabel:
-        text: "MrDark"
+        text: app.tittle
         font_style: "Button"
         size_hint_y: None
         height: self.texture_size[1]
 
     MDLabel:
-        text: "kozirev.fa@bk.ru"
+        text: app.by_who
         font_style: "Caption"
         size_hint_y: None
         height: self.texture_size[1]
@@ -66,7 +66,7 @@ Screen:
                     orientation: 'vertical'
 
                     MDToolbar:
-                        title: "Калькулятор ЕИ"
+                        title: app.tittle
                         elevation: 10
                         left_action_items: [['menu', lambda x: nav_drawer.set_state("open")]]
 
@@ -103,6 +103,8 @@ class DrawerList(ThemableBehavior, MDList):
 
 
 class Calculator(MDApp):
+    tittle = "Калькулятор ЕИ"
+    by_who = "by MrDark"
     def build(self):
         return Builder.load_string(KV)
 
