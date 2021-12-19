@@ -1,3 +1,8 @@
+#Перед работой приложения необходимо написать в терминале
+#pip install kivy
+#pip install kivymd
+#pip install https://github.com/kivymd/KivyMD/archive/3274d62.zip
+
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import StringProperty, ListProperty
@@ -7,10 +12,10 @@ from kivymd.app import MDApp
 from kivymd.theming import ThemableBehavior
 from kivymd.uix.list import OneLineIconListItem, MDList
 
-from kivymd.uix.tab import MDTabsBase
-from kivymd.uix.floatlayout import MDFloatLayout
-from kivymd.icon_definitions import md_icons
-from kivymd.font_definitions import fonts
+from kivy.metrics import dp
+from kivymd.uix.menu import MDDropdownMenu
+
+
 
 KV = '''
 # Menu item in the DrawerList list.
@@ -113,8 +118,21 @@ MDScreen:
                             icon: "speedometer"
                                         
                         MDTextField:
-                            hint_text: "Loan"
+                            id: speed1
+                            size_hint_x: None
+                            width: "200dp"
+                            hint_text: "Введите СИ"
+                            on_focus: if self.focus: app.menu.open()
                                     
+                    BoxLayout:
+                        orientation: 'horizontal'                                
+                                    
+                        MDIconButton:
+                            icon: "arrow-collapse-right"
+                                            
+                        MDTextField:
+                            hint_text: "Months"
+                    
                     BoxLayout:
                         orientation: 'horizontal'                                
                                     
@@ -147,6 +165,8 @@ MDScreen:
                 nav_drawer: nav_drawer
 '''
 
+metres=['mile','yard','foot','inch','km','m','cm','mm']
+long=0
 
 class ContentNavigationDrawer(BoxLayout):
     screen_manager = ObjectProperty()
@@ -170,12 +190,39 @@ class DrawerList(ThemableBehavior, MDList):
                 break
         instance_item.text_color = self.theme_cls.primary_color
 
+class IconListItem(OneLineIconListItem):
+    icon = StringProperty()
+
 
 class Calculator(MDApp):
     tittle = "Калькулятор ЕИ"
     by_who = "by MrDark"
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.screen = Builder.load_string(KV)
+        menu_items = [
+            {
+                "viewclass": "IconListItem",
+                "height": dp(56),
+                "text": metres[i],
+                "on_release": lambda x=metres[i]: self.set_item(x),
+            } for i in range(5)]
+        self.menu = MDDropdownMenu(
+            caller=self.screen.ids.speed1,
+            items=menu_items,
+            position="bottom",
+            width_mult=4,
+        )
+
+    def set_item(self, text__item):
+        self.screen.ids.speed1.text = text__item
+        self.menu.dismiss()
+
+
     def build(self):
-        return Builder.load_string(KV)
+        #return Builder.load_string(KV)
+        return self.screen
 
 
 
