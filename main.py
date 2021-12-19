@@ -1,10 +1,16 @@
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
 from kivy.properties import StringProperty, ListProperty
+from kivy.properties import ObjectProperty
 
 from kivymd.app import MDApp
 from kivymd.theming import ThemableBehavior
 from kivymd.uix.list import OneLineIconListItem, MDList
+
+from kivymd.uix.tab import MDTabsBase
+from kivymd.uix.floatlayout import MDFloatLayout
+from kivymd.icon_definitions import md_icons
+from kivymd.font_definitions import fonts
 
 KV = '''
 # Menu item in the DrawerList list.
@@ -49,39 +55,74 @@ KV = '''
 
     ScrollView:
 
-        DrawerList:
-            id: md_list
+        MDList:
+
+            OneLineListItem:
+                text: "Физика"
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "scr 1"
+
+            OneLineListItem:
+                text: "Время"
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "scr 2"
+            OneLineListItem:
+                text: "Память"
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "scr 3"
 
 
+MDScreen:
 
-Screen:
+    MDToolbar:
+        id: toolbar
+        pos_hint: {"top": 1}
+        elevation: 10
+        title: "MDNavigationDrawer"
+        left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
 
     MDNavigationLayout:
+        x: toolbar.height
 
         ScreenManager:
+            id: screen_manager
 
-            Screen:
+            MDScreen:
+                name: "scr 1"
 
-                BoxLayout:
-                    orientation: 'vertical'
+                MDLabel:
+                    text: "Screen 1"
+                    halign: "center"
 
-                    MDToolbar:
-                        title: app.tittle
-                        elevation: 10
-                        left_action_items: [['menu', lambda x: nav_drawer.set_state("open")]]
+            MDScreen:
+                name: "scr 2"
 
-                    Widget:
+                MDLabel:
+                    text: "Screen 2"
+                    halign: "center"
+            
+            MDScreen:
+                name: "scr 3"
 
+                MDLabel:
+                    text: "Screen 1"
+                    halign: "center"
 
         MDNavigationDrawer:
             id: nav_drawer
 
             ContentNavigationDrawer:
-                id: content_drawer
+                screen_manager: screen_manager
+                nav_drawer: nav_drawer
 '''
 
 
 class ContentNavigationDrawer(BoxLayout):
+    screen_manager = ObjectProperty()
+    nav_drawer = ObjectProperty()
     pass
 
 
@@ -108,23 +149,8 @@ class Calculator(MDApp):
     def build(self):
         return Builder.load_string(KV)
 
-    def on_start(self):
-        icons_item = {
-            "folder": "Память",
-            "history": "Время",
-            "ruler": "Длина",
-            "ruler-square": "Площадь",
-            "glass-pint-outline": "Объем",
-            "speedometer": "Скорость",
-            "piston": "Давление",
-            "thermometer": "Температура",
-            "lightning-bolt": "Энергия",
-            "assistant": "Исходный код",
-        }
-        for icon_name in icons_item.keys():
-            self.root.ids.content_drawer.ids.md_list.add_widget(
-                ItemDrawer(icon=icon_name, text=icons_item[icon_name])
-            )
+
+
 
 
 Calculator().run()
