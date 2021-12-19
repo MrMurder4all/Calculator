@@ -81,7 +81,7 @@ MDScreen:
         id: toolbar
         pos_hint: {"top": 1}
         elevation: 10
-        title: "MDNavigationDrawer"
+        title: "Калькулятор ЕИ"
         left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
 
     MDNavigationLayout:
@@ -93,9 +93,37 @@ MDScreen:
             MDScreen:
                 name: "scr 1"
 
-                MDLabel:
-                    text: "Screen 1"
-                    halign: "center"
+                BoxLayout:
+                    orientation: 'vertical'
+                    padding: "10dp"   
+                                
+                    BoxLayout:
+                        orientation: 'horizontal'                               
+                                    
+                        MDIconButton:
+                            icon: "arrow-down-bold"
+                                        
+                        MDTextField:
+                            hint_text: "remake"
+                            
+                    BoxLayout:
+                        orientation: 'horizontal'                         
+                                    
+                        MDIconButton:
+                            icon: "speedometer"
+                                        
+                        MDTextField:
+                            hint_text: "Loan"
+                                    
+                    BoxLayout:
+                        orientation: 'horizontal'                                
+                                    
+                        MDIconButton:
+                            icon: "arrow-collapse-right"
+                                            
+                        MDTextField:
+                            hint_text: "Months"
+                                    
 
             MDScreen:
                 name: "scr 2"
@@ -108,7 +136,7 @@ MDScreen:
                 name: "scr 3"
 
                 MDLabel:
-                    text: "Screen 1"
+                    text: "Screen 3"
                     halign: "center"
 
         MDNavigationDrawer:
