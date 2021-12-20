@@ -203,7 +203,7 @@ MDScreen:
                         orientation: 'horizontal'                         
                                     
                         MDIconButton:
-                            icon: "speedometer"
+                            icon: "ruler"
                                         
                         MDTextField:
                             id: length1
@@ -270,7 +270,7 @@ MDScreen:
                         orientation: 'horizontal'                         
                                     
                         MDIconButton:
-                            icon: "speedometer"
+                            icon: "ruler-square"
                                         
                         MDTextField:
                             id: square1
@@ -337,7 +337,7 @@ MDScreen:
                         orientation: 'horizontal'                         
                                     
                         MDIconButton:
-                            icon: "speedometer"
+                            icon: "glass-pint-outline"
                                         
                         MDTextField:
                             id: volume1
@@ -404,7 +404,7 @@ MDScreen:
                         orientation: 'horizontal'                         
                                     
                         MDIconButton:
-                            icon: "speedometer"
+                            icon: "history"
                                         
                         MDTextField:
                             id: time1
@@ -471,7 +471,7 @@ MDScreen:
                         orientation: 'horizontal'                         
                                     
                         MDIconButton:
-                            icon: "speedometer"
+                            icon: "folder"
                                         
                         MDTextField:
                             id: data1
