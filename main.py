@@ -135,7 +135,7 @@ MDScreen:
                         orientation: 'horizontal'                         
                                     
                         MDIconButton:
-                            icon: "speedometer"
+                            icon: "speedometer" 
                                         
                         MDTextField:
                             id: speed1
