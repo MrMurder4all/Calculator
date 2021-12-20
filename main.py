@@ -63,21 +63,56 @@ KV = '''
         MDList:
 
             OneLineListItem:
-                text: "Физика"
+                text: "Скорость"
                 on_press:
                     root.nav_drawer.set_state("close")
                     root.screen_manager.current = "scr 1"
 
             OneLineListItem:
-                text: "Время"
+                text: "Расстояние"
                 on_press:
                     root.nav_drawer.set_state("close")
                     root.screen_manager.current = "scr 2"
+                    
+            OneLineListItem:
+                text: "Площадь"
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "scr 3"
+            
+            OneLineListItem:
+                text: "Объем"
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "scr 4"
+            
+            OneLineListItem:
+                text: "Время"
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "scr 5"
+            
+            OneLineListItem:
+                text: "Температура"
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "scr 6"
+            
+            OneLineListItem:
+                text: "Давление"
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "scr 7"
+            
             OneLineListItem:
                 text: "Память"
                 on_press:
                     root.nav_drawer.set_state("close")
-                    root.screen_manager.current = "scr 3"
+                    root.screen_manager.current = "scr 8"
+            
+            
+            
+            
 
 
 MDScreen:
@@ -109,7 +144,8 @@ MDScreen:
                             icon: "arrow-down-bold"
                                         
                         MDTextField:
-                            hint_text: "remake"
+                            id: speed_input
+                            hint_text: "Введите скорость"
                             
                     BoxLayout:
                         orientation: 'horizontal'                         
@@ -121,41 +157,180 @@ MDScreen:
                             id: speed1
                             size_hint_x: None
                             width: "200dp"
-                            hint_text: "Введите СИ"
+                            hint_text: "Исходная СИ"
                             on_focus: if self.focus: app.menu.open()
-                                    
-                    BoxLayout:
-                        orientation: 'horizontal'                                
-                                    
+                        
                         MDIconButton:
                             icon: "arrow-collapse-right"
                                             
                         MDTextField:
-                            hint_text: "Months"
-                    
+                            id: speed2
+                            size_hint_x: None
+                            width: "200dp"
+                            hint_text: "Конечная СИ"
+                            on_focus: if self.focus: app.menu2.open()
+                                    
                     BoxLayout:
-                        orientation: 'horizontal'                                
+                        orientation: 'horizontal'                               
                                     
                         MDIconButton:
-                            icon: "arrow-collapse-right"
-                                            
+                            icon: "arrow-up-bold"
+                                        
                         MDTextField:
-                            hint_text: "Months"
+                            id: speed_output
+                            hint_text: "Итог"
+                        
+                    BoxLayout:
+                        orientation: 'horizontal'
+                                    
+                        AnchorLayout:
+                            anchor_x: 'center'
+                                
+                            MDRectangleFlatIconButton:
+                                icon: "adjust"
+                                text: "Рассчет"
+                                theme_text_color: "Custom"
+                                text_color: 0, 0, 0, 1
+                                line_color: 0, 0, 0, 1
+                                icon_color: 0, 1, 0, 1
+                                md_bg_color: 0.1, 0.1, 0.1, 1
+                                adaptive_width: True
+                                on_release: app.calc_table_speed(*args)
                                     
 
             MDScreen:
                 name: "scr 2"
-
-                MDLabel:
-                    text: "Screen 2"
-                    halign: "center"
+                
+                BoxLayout:
+                    orientation: 'vertical'
+                    padding: "10dp"   
+                                
+                    BoxLayout:
+                        orientation: 'horizontal'                               
+                                    
+                        MDIconButton:
+                            icon: "arrow-down-bold"
+                                        
+                        MDTextField:
+                            id: length_input
+                            hint_text: "Введите длину"
+                            
+                    BoxLayout:
+                        orientation: 'horizontal'                         
+                                    
+                        MDIconButton:
+                            icon: "speedometer"
+                                        
+                        MDTextField:
+                            id: length1
+                            size_hint_x: None
+                            width: "200dp"
+                            hint_text: "Исходная СИ"
+                            on_focus: if self.focus: app.menu_length1.open()
+                        
+                        MDIconButton:
+                            icon: "arrow-collapse-right"
+                                            
+                        MDTextField:
+                            id: length2
+                            size_hint_x: None
+                            width: "200dp"
+                            hint_text: "Конечная СИ"
+                            on_focus: if self.focus: app.menu_length2.open()
+                                    
+                    BoxLayout:
+                        orientation: 'horizontal'                               
+                                    
+                        MDIconButton:
+                            icon: "arrow-up-bold"
+                                        
+                        MDTextField:
+                            id: length_output
+                            hint_text: "Итог"
+                        
+                    BoxLayout:
+                        orientation: 'horizontal'
+                                    
+                        AnchorLayout:
+                            anchor_x: 'center'
+                                
+                            MDRectangleFlatIconButton:
+                                icon: "adjust"
+                                text: "Рассчет"
+                                theme_text_color: "Custom"
+                                text_color: 0, 0, 0, 1
+                                line_color: 0, 0, 0, 1
+                                icon_color: 0, 1, 0, 1
+                                md_bg_color: 0.1, 0.1, 0.1, 1
+                                adaptive_width: True
+                                on_release: app.calc_table_length(*args)
             
             MDScreen:
                 name: "scr 3"
 
-                MDLabel:
-                    text: "Screen 3"
-                    halign: "center"
+                BoxLayout:
+                    orientation: 'vertical'
+                    padding: "10dp"   
+                                
+                    BoxLayout:
+                        orientation: 'horizontal'                               
+                                    
+                        MDIconButton:
+                            icon: "arrow-down-bold"
+                                        
+                        MDTextField:
+                            id: volume_input
+                            hint_text: "Введите площадь"
+                            
+                    BoxLayout:
+                        orientation: 'horizontal'                         
+                                    
+                        MDIconButton:
+                            icon: "speedometer"
+                                        
+                        MDTextField:
+                            id: length1
+                            size_hint_x: None
+                            width: "200dp"
+                            hint_text: "Исходная СИ"
+                            on_focus: if self.focus: app.menu_length1.open()
+                        
+                        MDIconButton:
+                            icon: "arrow-collapse-right"
+                                            
+                        MDTextField:
+                            id: length2
+                            size_hint_x: None
+                            width: "200dp"
+                            hint_text: "Конечная СИ"
+                            on_focus: if self.focus: app.menu_length2.open()
+                                    
+                    BoxLayout:
+                        orientation: 'horizontal'                               
+                                    
+                        MDIconButton:
+                            icon: "arrow-up-bold"
+                                        
+                        MDTextField:
+                            id: length_output
+                            hint_text: "Итог"
+                        
+                    BoxLayout:
+                        orientation: 'horizontal'
+                                    
+                        AnchorLayout:
+                            anchor_x: 'center'
+                                
+                            MDRectangleFlatIconButton:
+                                icon: "adjust"
+                                text: "Рассчет"
+                                theme_text_color: "Custom"
+                                text_color: 0, 0, 0, 1
+                                line_color: 0, 0, 0, 1
+                                icon_color: 0, 1, 0, 1
+                                md_bg_color: 0.1, 0.1, 0.1, 1
+                                adaptive_width: True
+                                on_release: app.calc_table_length(*args)
 
         MDNavigationDrawer:
             id: nav_drawer
@@ -164,8 +339,10 @@ MDScreen:
                 screen_manager: screen_manager
                 nav_drawer: nav_drawer
 '''
-
-metres=['mile','yard','foot','inch','km','m','cm','mm']
+speeds = ['км/ч','м/с','км/с','км/мин','м/ч','м/мин','футы/с','миль/ч']
+speed_num = [1,3.6,3600,60,0.001,0.06,1.09728,1.6092]
+length = ['mile','yard','foot','inch','km','m','cm','mm']
+length_num = [1609.344,0.9144,0.3048,0.0254,1000,1,0.01,0.001]
 long=0
 
 class ContentNavigationDrawer(BoxLayout):
@@ -205,9 +382,9 @@ class Calculator(MDApp):
             {
                 "viewclass": "IconListItem",
                 "height": dp(56),
-                "text": metres[i],
-                "on_release": lambda x=metres[i]: self.set_item(x),
-            } for i in range(5)]
+                "text": speeds[i],
+                "on_release": lambda x=speeds[i]: self.set_speed1(x),
+            } for i in range(len(speeds))]
         self.menu = MDDropdownMenu(
             caller=self.screen.ids.speed1,
             items=menu_items,
@@ -215,14 +392,96 @@ class Calculator(MDApp):
             width_mult=4,
         )
 
-    def set_item(self, text__item):
+        menu2_items = [
+            {
+                "viewclass": "IconListItem",
+                "height": dp(56),
+                "text": speeds[i],
+                "on_release": lambda x=speeds[i]: self.set_speed2(x),
+            } for i in range(len(speeds))]
+        self.menu2 = MDDropdownMenu(
+            caller=self.screen.ids.speed2,
+            items=menu2_items,
+            position="bottom",
+            width_mult=4,
+        )
+
+        menu_length1_items = [
+            {
+                "viewclass": "IconListItem",
+                "height": dp(56),
+                "text": length[i],
+                "on_release": lambda x=length[i]: self.set_length1(x),
+            } for i in range(len(length))]
+        self.menu_length1 = MDDropdownMenu(
+            caller=self.screen.ids.length1,
+            items=menu_length1_items,
+            position="bottom",
+            width_mult=4,
+        )
+
+        menu_length2_items = [
+            {
+                "viewclass": "IconListItem",
+                "height": dp(56),
+                "text": length[i],
+                "on_release": lambda x=length[i]: self.set_length2(x),
+            } for i in range(len(length))]
+        self.menu_length2 = MDDropdownMenu(
+            caller=self.screen.ids.length2,
+            items=menu_length2_items,
+            position="bottom",
+            width_mult=4,
+        )
+
+
+    def set_speed1(self, text__item):
         self.screen.ids.speed1.text = text__item
         self.menu.dismiss()
 
 
+    def set_speed2(self, text__item):
+        self.screen.ids.speed2.text = text__item
+        self.menu2.dismiss()
+
+    def set_length1(self, text__item):
+        self.screen.ids.length1.text = text__item
+        self.menu_length1.dismiss()
+
+    def set_length2(self, text__item):
+        self.screen.ids.length2.text = text__item
+        self.menu_length2.dismiss()
+
     def build(self):
         #return Builder.load_string(KV)
         return self.screen
+
+    def calc_table_speed(self, *args):
+        print("button1 pressed")
+        metrics1 = self.screen.ids.speed1.text
+        input = float(self.screen.ids.speed_input.text)
+        metrics2 = self.screen.ids.speed2.text
+
+        for i in range(0,len(speeds)):
+            if metrics1 == speeds[i]:
+                input = input * speed_num[i]
+            if metrics2 == speeds[i]:
+                input = input / speed_num[i]
+        self.screen.ids.speed_output.text = str(input)
+
+    def calc_table_length(self, *args):
+        print("button1 pressed")
+        metrics1 = self.screen.ids.length1.text
+        input = float(self.screen.ids.length_input.text)
+        metrics2 = self.screen.ids.length2.text
+
+        for i in range(0, len(speeds)):
+            if metrics1 == length[i]:
+                input = input * length_num[i]
+            if metrics2 == length[i]:
+                input = input / length_num[i]
+        self.screen.ids.length_output.text = str(input)
+
 
 
 
