@@ -1,7 +1,6 @@
 #Перед работой приложения необходимо написать в терминале
 #pip install kivy
 #pip install kivymd
-#pip install https://github.com/kivymd/KivyMD/archive/3274d62.zip
 
 from kivy.lang import Builder
 from kivy.uix.boxlayout import BoxLayout
@@ -140,7 +139,7 @@ MDScreen:
                         MDTextField:
                             id: speed1
                             size_hint_x: None
-                            width: "200dp"
+                            width: "100dp"
                             hint_text: "Исходная СИ"
                             on_focus: if self.focus: app.menu.open()
                         
@@ -150,7 +149,7 @@ MDScreen:
                         MDTextField:
                             id: speed2
                             size_hint_x: None
-                            width: "200dp"
+                            width: "100dp"
                             hint_text: "Конечная СИ"
                             on_focus: if self.focus: app.menu2.open()
                                     
@@ -208,7 +207,7 @@ MDScreen:
                         MDTextField:
                             id: length1
                             size_hint_x: None
-                            width: "200dp"
+                            width: "100dp"
                             hint_text: "Исходная СИ"
                             on_focus: if self.focus: app.menu_length1.open()
                         
@@ -218,7 +217,7 @@ MDScreen:
                         MDTextField:
                             id: length2
                             size_hint_x: None
-                            width: "200dp"
+                            width: "100dp"
                             hint_text: "Конечная СИ"
                             on_focus: if self.focus: app.menu_length2.open()
                                     
@@ -275,7 +274,7 @@ MDScreen:
                         MDTextField:
                             id: square1
                             size_hint_x: None
-                            width: "200dp"
+                            width: "100dp"
                             hint_text: "Исходная СИ"
                             on_focus: if self.focus: app.menu_square1.open()
                         
@@ -285,7 +284,7 @@ MDScreen:
                         MDTextField:
                             id: square2
                             size_hint_x: None
-                            width: "200dp"
+                            width: "100dp"
                             hint_text: "Конечная СИ"
                             on_focus: if self.focus: app.menu_square2.open()
                                     
@@ -342,7 +341,7 @@ MDScreen:
                         MDTextField:
                             id: volume1
                             size_hint_x: None
-                            width: "200dp"
+                            width: "100dp"
                             hint_text: "Исходная СИ"
                             on_focus: if self.focus: app.menu_volume1.open()
                         
@@ -352,7 +351,7 @@ MDScreen:
                         MDTextField:
                             id: volume2
                             size_hint_x: None
-                            width: "200dp"
+                            width: "100dp"
                             hint_text: "Конечная СИ"
                             on_focus: if self.focus: app.menu_volume2.open()
                                     
@@ -409,7 +408,7 @@ MDScreen:
                         MDTextField:
                             id: time1
                             size_hint_x: None
-                            width: "200dp"
+                            width: "100dp"
                             hint_text: "Исходная СИ"
                             on_focus: if self.focus: app.menu_time1.open()
                         
@@ -419,7 +418,7 @@ MDScreen:
                         MDTextField:
                             id: time2
                             size_hint_x: None
-                            width: "200dp"
+                            width: "100dp"
                             hint_text: "Конечная СИ"
                             on_focus: if self.focus: app.menu_time2.open()
                                     
@@ -476,7 +475,7 @@ MDScreen:
                         MDTextField:
                             id: data1
                             size_hint_x: None
-                            width: "200dp"
+                            width: "100dp"
                             hint_text: "Исходная СИ"
                             on_focus: if self.focus: app.menu_data1.open()
                         
@@ -486,7 +485,7 @@ MDScreen:
                         MDTextField:
                             id: data2
                             size_hint_x: None
-                            width: "200dp"
+                            width: "100dp"
                             hint_text: "Конечная СИ"
                             on_focus: if self.focus: app.menu_data2.open()
                                     
